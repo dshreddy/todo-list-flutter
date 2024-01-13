@@ -29,22 +29,7 @@ class _TaskItemState extends State<TaskItem> {
       child: Column(
         children: <Widget>[
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: Text(
-                  widget.taskText,
-                  style: TextStyle(
-                    decorationColor: Colors.white,
-                    decorationThickness: 2,
-                    decoration: isChecked ? TextDecoration.lineThrough : null,
-                    color: Colors.white,
-                    fontSize: 20,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              ),
               Checkbox(
                 side: const BorderSide(color: Colors.white, width: 2),
                 checkColor: Colors.lightBlueAccent,
@@ -56,6 +41,27 @@ class _TaskItemState extends State<TaskItem> {
                     isChecked = (value != null);
                   });
                 },
+              ),
+              Expanded(
+                flex: 1,
+                child: Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Text(
+                      widget.taskText,
+                      style: TextStyle(
+                        decorationColor: Colors.white,
+                        decorationThickness: 2,
+                        decoration:
+                            isChecked ? TextDecoration.lineThrough : null,
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                ),
               ),
             ],
           ),
